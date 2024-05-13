@@ -33,6 +33,7 @@
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   margin-bottom: 100px;
+  height: 880px;
 }
 
 .title {
@@ -41,6 +42,7 @@
 }
 
 .input_Title textarea {
+  margin-top: 10px;
   width: 50%;
   padding: 5px;
   height: 40px;
@@ -68,6 +70,12 @@
 }
 
 .image {
+  object-fit: cover;
+  height: 500px;
+  border-radius: 15px;
+}
+
+.image_user{
   object-fit: cover;
 }
 

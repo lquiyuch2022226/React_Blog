@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import "./Comments.css";
 import { useCommentPost } from "../../shared/hooks/useCommentPost";
 import { useComments } from "../../shared/hooks/useComments";
@@ -21,6 +22,24 @@ export const Comments = ({ publiUnica }) => {
         console.log(publiUnica.publication._id, desc)
         await commentPost(publiUnica.publication._id, desc);
         getComments(publiUnica.publication._id);
+        setDesc("");
+        toast.success("Comentario agregado");
+    };
+
+    const getImagePath = (publicaciones) => {
+        switch (publicaciones.title) {
+            case 'Sistema de adopción de mascotas':
+                return '../../../public/mascotas.jpg';
+
+            case 'Control Académico':
+                return '../../../public/academico.jpg';
+
+            case 'Beneficios de la utilización de ReactJS':
+                return '../../../public/react.jpg';
+
+            default:
+                return '../../../public/react.jpg';
+        }
     };
 
 
@@ -33,7 +52,7 @@ export const Comments = ({ publiUnica }) => {
                     </h1>
                     <div className='post'>
                         <div className='imgContainer'>
-                            <img src={publiUnica.publication.imagen} alt="" className='image' />
+                            <img src={getImagePath(publiUnica.publication)} alt="" className='image' />
                         </div>
 
                         <div className='textContainer'>
@@ -54,6 +73,7 @@ export const Comments = ({ publiUnica }) => {
                         <textarea
                             placeholder="Escribe un comentario :)..."
                             className='input'
+                            value={desc}
                             onChange={(e) => setDesc(e.target.value)}
                         />
                         <button className='button' onClick={handleSubmit}>
@@ -64,7 +84,7 @@ export const Comments = ({ publiUnica }) => {
 
                 <div>
                     <div className='comments'>
-                        {comments.map((item) => (
+                        {comments.slice().reverse().map((item) => (
                             <div className='comment' key={item._id}>
                                 <div className='user'>
                                     <img
@@ -72,7 +92,7 @@ export const Comments = ({ publiUnica }) => {
                                         alt=""
                                         width={50}
                                         height={50}
-                                        className='image'
+                                        className='image_user'
                                     />
                                 </div>
                                 <p className='desc'>{item.commentText}</p>

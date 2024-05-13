@@ -50,6 +50,7 @@ background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   flex-direction: column;
   gap: .5rem;
   color: #000;
+  align-items: center;
 }
 
 
@@ -99,9 +100,24 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
 }
 
 .user__image {
+  max-width: 50px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
-.user__info > small {
-  color: #666;
+.button_More{
+  width: 50%;
+  font-family: "Quicksand", sans-serif;
+  height: 30px;
+  bottom: 0;
+}
+
+.user__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: "Quicksand", sans-serif;
+  color: black;
 }
