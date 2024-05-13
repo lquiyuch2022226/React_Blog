@@ -19,10 +19,10 @@ export const getPublications = async () => {
 export const getOnePublication = async (publicationId) => {
     try{
         const response = await apiClient.get(`/publication/one/${publicationId}`);
-        console.log(response); // Imprime la respuesta en la consola
+        console.log(response);
         return response;
     }catch(e){
-        console.error(e); // Imprime el error en la consola
+        console.error(e);
         return{
             error: true,
             e
@@ -30,18 +30,21 @@ export const getOnePublication = async (publicationId) => {
     }
 }
 
-
-
-export const commentPost = async (data) => {
+export const commentPost = async (publicationId, commentText) => {
     try{
-        return await apiClient.post('/comment/', data)
+        console.log(publicationId, commentText)
+        return await apiClient.post(`/comment/create/${publicationId}`, { commentText })
     }catch(e){
+        console.log(e)
         return{
             error: true,
             e
         }
     }
 }
+
+
+
 
 export const commentsGet = async () => {
     try{
