@@ -16,6 +16,22 @@ export const getPublications = async () => {
     }
 }
 
+export const getOnePublication = async (publicationId) => {
+    try{
+        const response = await apiClient.get(`/publication/one/${publicationId}`);
+        console.log(response); // Imprime la respuesta en la consola
+        return response;
+    }catch(e){
+        console.error(e); // Imprime el error en la consola
+        return{
+            error: true,
+            e
+        }
+    }
+}
+
+
+
 export const commentPost = async (data) => {
     try{
         return await apiClient.post('/comment/', data)
