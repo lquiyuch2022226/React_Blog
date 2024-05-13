@@ -47,7 +47,7 @@ export const Comments = ({ publiUnica }) => {
             </div>
 
             <div className='container_2'>
-                
+
                 <div className='input_Title'>
                     <h4 className='fooder_title'>Comentarios</h4>
                     <div className='write'>
@@ -65,7 +65,7 @@ export const Comments = ({ publiUnica }) => {
                 <div>
                     <div className='comments'>
                         {comments.map((item) => (
-                            <div className='comments' key={item._id}>
+                            <div className='comment' key={item._id}>
                                 <div className='user'>
                                     <img
                                         src={'../../../public/user.png'}
