@@ -12,7 +12,7 @@ export const DashboardPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="auth-container">
       <PublicationsCard publicaciones={allPublications}/>
     </div>
   );

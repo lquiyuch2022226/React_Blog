@@ -1,44 +1,60 @@
-.container {
-  margin-top: 30px;
-
-}
-
 .comments {
   display: flex;
   flex-direction: column;
-}
-
-.comment {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
 }
 
 .desc{
   margin-left: 10px;
 }
 
+.container {
+  margin: 50px auto;
+  max-width: 100%;
+  width: 90%;
+  overflow: hidden;
+  color: white;
+}
+
 .container_2 {
+  flex: 1;
   background-color: #242424;
   width: 100%;
+  color: white;
 }
 
 .all_container {
-  width: 100%;
+  width: 100vw;
+  height: 100%;
+  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
 }
 
 .info_container {
+  flex: 1;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  margin-bottom: 100px;
-  height: 880px;
 }
 
 .title {
   font-size: 96px;
   font-weight: 300;
+}
+
+.input_Title  {
+  margin-left: 10vw;
+  margin-bottom: 10px;
+  padding-top: 10vh;
+}
+
+.comments{
+  margin-left: 10vw;
+}
+
+.comment {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 50px;
 }
 
 .input_Title textarea {
@@ -52,12 +68,11 @@
 }
 
 .input_Title button {
-  color: white;
+  color: black;
   margin-left: 25px;
 }
 
 .post {
-  margin-top: 60px;
   display: flex;
   align-items: center;
   gap: 50px;
@@ -65,14 +80,14 @@
 
 .imgContainer {
   flex: 1;
-  height: 500px;
   position: relative;
 }
 
 .image {
   object-fit: cover;
-  height: 500px;
+  width: 50vw;
   border-radius: 15px;
+  max-width: 500px;
 }
 
 .image_user{

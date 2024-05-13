@@ -45,28 +45,25 @@ export const Comments = ({ publiUnica }) => {
 
     return (
         <div className='all_container'>
-            <div className='info_container'>
-                <div className='container'>
-                    <h1 className='title'>
-                        <b>{publiUnica.publication.title}</b>
-                    </h1>
-                    <div className='post'>
-                        <div className='imgContainer'>
-                            <img src={getImagePath(publiUnica.publication)} alt="" className='image' />
-                        </div>
+            <div className='container'>
+                <h1 className='title'>
+                    <b>{publiUnica.publication.title}</b>
+                </h1>
+                <div className='post'>
+                    <div className='imgContainer'>
+                        <img src={getImagePath(publiUnica.publication)} alt="" className='image' />
+                    </div>
 
-                        <div className='textContainer'>
-                            <p className='postTitle'>
-                                {publiUnica.publication.descript}
-                            </p>
-                            <h1 className='postDesc'>{publiUnica.publication.text}</h1>
-                        </div>
+                    <div className='textContainer'>
+                        <p className='postTitle'>
+                            {publiUnica.publication.descript}
+                        </p>
+                        <h1 className='postDesc'>{publiUnica.publication.text}</h1>
                     </div>
                 </div>
             </div>
 
             <div className='container_2'>
-
                 <div className='input_Title'>
                     <h4 className='fooder_title'>Comentarios</h4>
                     <div className='write'>
@@ -102,6 +99,5 @@ export const Comments = ({ publiUnica }) => {
                 </div>
             </div>
         </div >
-    )
+    );
 };
-
