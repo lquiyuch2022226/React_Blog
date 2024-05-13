@@ -32,10 +32,9 @@ export const getOnePublication = async (publicationId) => {
 
 export const commentPost = async (publicationId, commentText) => {
     try{
-        console.log(publicationId, commentText)
         return await apiClient.post(`/comment/create/${publicationId}`, { commentText })
     }catch(e){
-        console.log(e)
+        console.log(publicationId, commentText, e)
         return{
             error: true,
             e
@@ -43,13 +42,11 @@ export const commentPost = async (publicationId, commentText) => {
     }
 }
 
-
-
-
-export const commentsGet = async () => {
+export const commentsGet = async (idPublication) => {
     try{
-        return await apiClient.get('/comment/')
+        return await apiClient.get(`/comment/${idPublication}`)
     }catch(e){
+        console.log(idPublication)
         return{
             error: true,
             e

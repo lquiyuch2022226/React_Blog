@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { usePublication } from '../../shared/hooks/usePublication'
+import { useComments } from '../../shared/hooks/useComments'
 import './PublicationsCard.css'
 import {Comments} from '../comments/Comments'
 
 export const PublicationsCard = ({ publicaciones }) => {
     const { getPublication } = usePublication();
+    const { getComments } = useComments();
     const [selectedId, setSelectedId] = useState(null);
 
     const handleCommentClick = async (id) => {
-        console.log(id)
         const publication = await getPublication(id);
         setSelectedId(publication);
-        console.log(publication.title)
+        console.log(id, 'boton comentarios')
+        getComments(id);
     }
 
     if (!Array.isArray(publicaciones)) {

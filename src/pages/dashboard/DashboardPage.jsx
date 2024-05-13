@@ -12,9 +12,8 @@ export const DashboardPage = () => {
   }, []);
 
   return (
-    <div className="dashboard-container">
+    <div>
       <PublicationsCard publicaciones={allPublications}/>
-      <h1>hola</h1>
     </div>
   );
 };
