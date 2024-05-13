@@ -7,7 +7,6 @@ export const usePublication = () => {
 
     const getPublication = async (publicationId) => {
         const publicationData = await getOnePublicationRequest(publicationId);
-        console.log(publicationData); 
         if (publicationData.error) {
             return toast.error(
                 publicationData.error,

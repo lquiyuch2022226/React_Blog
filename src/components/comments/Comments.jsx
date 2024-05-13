@@ -6,23 +6,22 @@ import { useCommentPost } from "../../shared/hooks/useCommentPost";
 import { useComments } from "../../shared/hooks/useComments";
 
 export const Comments = ({ publiUnica }) => {
-    console.log(publiUnica, 'muestra el titulo al boton')
 
     const [desc, setDesc] = useState("");
+    const [autor, setAutor] = useState("");
     const { commentPost } = useCommentPost();
     const { comments, getComments } = useComments(publiUnica.publication._id);
-    console.log(publiUnica.publication._id, 'envio al hook')
-    console.log(comments, 'respuesta del hook')
 
     useEffect(() => {
         getComments(publiUnica.publication._id);
     }, [publiUnica.publication._id]);
 
     const handleSubmit = async () => {
-        console.log(publiUnica.publication._id, desc)
-        await commentPost(publiUnica.publication._id, desc);
+        console.log(publiUnica.publication._id, autor, desc)
+        await commentPost(publiUnica.publication._id, autor, desc);
         getComments(publiUnica.publication._id);
         setDesc("");
+        setAutor("");
         toast.success("Comentario agregado");
     };
 
@@ -67,6 +66,12 @@ export const Comments = ({ publiUnica }) => {
                 <div className='input_Title'>
                     <h4 className='fooder_title'>Comentarios</h4>
                     <div className='write'>
+                        <input
+                            placeholder="Nombre Completo"
+                            className='input'
+                            value={autor}
+                            onChange={(e) => setAutor(e.target.value)}
+                        />
                         <textarea
                             placeholder="Escribe un comentario :)..."
                             className='input'

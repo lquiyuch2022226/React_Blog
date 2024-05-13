@@ -4,8 +4,9 @@ import { commentPost as commentPostRequest } from "../../services/api";
 export const useCommentPost = () => {
     const [comment, setComment] = useState([]);
     const [error, setError] = useState(null);
-    const commentPost = async (idPublication, commentText) => {
-        const responseData = await commentPostRequest(idPublication, commentText)
+    const commentPost = async (idPublication, autorName, commentText) => {
+        console.log(idPublication, autorName, commentText, 'envia a database')
+        const responseData = await commentPostRequest(idPublication, autorName, commentText)
         if (responseData.error) {
             console.log(responseData.message)
             setError(responseData.error)

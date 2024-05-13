@@ -12,7 +12,6 @@ export const PublicationsCard = ({ publicaciones }) => {
     const handleCommentClick = async (id) => {
         const publication = await getPublication(id);
         setSelectedId(publication);
-        console.log(id, 'boton comentarios')
         getComments(id);
     }
 
