@@ -28,9 +28,9 @@ export const getOnePublication = async (publicationId) => {
     }
 }
 
-export const commentPost = async (publicationId, autorName, commentText) => {
+export const commentPost = async (publicationId, autorName, date, commentText) => {
     try{
-        return await apiClient.post(`/comment/create/${publicationId}`, {autorName}, { commentText })
+        return await apiClient.post(`/comment/create/${publicationId}`, { autorName, date, commentText })
     }catch(e){
         return{
             error: true,

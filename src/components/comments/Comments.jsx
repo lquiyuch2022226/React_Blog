@@ -17,8 +17,12 @@ export const Comments = ({ publiUnica }) => {
     }, [publiUnica.publication._id]);
 
     const handleSubmit = async () => {
-        console.log(publiUnica.publication._id, autor, desc)
-        await commentPost(publiUnica.publication._id, autor, desc);
+        if (!autor || !desc) {
+            toast.error("Por favor, rellena todos los campos");
+            return;
+        }
+        const date = new Date().toISOString();
+        await commentPost(publiUnica.publication._id, autor, date, desc);
         getComments(publiUnica.publication._id);
         setDesc("");
         setAutor("");
@@ -66,20 +70,18 @@ export const Comments = ({ publiUnica }) => {
                 <div className='input_Title'>
                     <h4 className='fooder_title'>Comentarios</h4>
                     <div className='write'>
-                        <input
-                            placeholder="Nombre Completo"
-                            className='input'
-                            value={autor}
-                            onChange={(e) => setAutor(e.target.value)}
-                        />
-                        <textarea
-                            placeholder="Escribe un comentario :)..."
-                            className='input'
-                            value={desc}
-                            onChange={(e) => setDesc(e.target.value)}
-                        />
+                        <div class="input-group">
+                            <input required="true" type="text" value={autor} class="input" onChange={(e) => setAutor(e.target.value)} />
+                            <label class="user-label">Nombre Completo</label>
+                        </div>
+                        <div class="input-group">
+                            <textarea required="true" type="text" value={desc} class="input" onChange={(e) => setDesc(e.target.value)} />
+                            <label class="user-label">Escribe un comentario</label>
+                        </div>
+                    </div>
+                    <div className='espacio'>
                         <button className='button' onClick={handleSubmit}>
-                            Send
+                            <span>Comentar</span>
                         </button>
                     </div>
                 </div>
@@ -97,7 +99,13 @@ export const Comments = ({ publiUnica }) => {
                                         className='image_user'
                                     />
                                 </div>
-                                <p className='desc'>{item.commentText}</p>
+                                <div>
+                                    <div className='info_comment'>
+                                        <p className='autorName'>{item.autorName}</p>
+                                        <p className='date'>{item.date}</p>
+                                    </div>
+                                    <p className='desc'>{item.commentText}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -106,3 +114,5 @@ export const Comments = ({ publiUnica }) => {
         </div >
     );
 };
+
+
